@@ -9,18 +9,15 @@ use App\Models\Category;
 class ImportProducts extends Command
 {
     protected $signature = 'import:products {file}';
-    protected $description = 'Import products and categories from a CSV file';
+    protected $description = 'Termékek és kategóriák importálása CSV-fájlból';
 
     public function handle()
 {
     $file = $this->argument('file');
 
-    // CSV beolvasása
     $csv = array_map('str_getcsv', file($file));
-   // $header = array_shift($csv); // Első sor, ami a fejléc
 
     foreach ($csv as $row) {
-        // Sorban lévő adatok ellenőrzése és kitöltése, ha szükséges
         $name = $row[0] ?? null;
         $price = $row[1] ?? null;
         $cat1 = $row[2] ?? null;

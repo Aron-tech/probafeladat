@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
 {
-    // Termékek táblája
+    // Termékek tábla
     Schema::create('products', function (Blueprint $table) {
         $table->id();
         $table->string('name')->unique();
@@ -19,14 +19,14 @@ return new class extends Migration
         $table->timestamps();
     });
 
-    // Kategóriák táblája
+    // Kategóriák tábla
     Schema::create('categories', function (Blueprint $table) {
         $table->id();
         $table->string('name')->unique();
         $table->timestamps();
     });
 
-    // Köztes tábla a termékek és kategóriák kapcsolatához
+    // Kapcsoló tábla
     Schema::create('category_product', function (Blueprint $table) {
         $table->id();
         $table->foreignId('product_id')->constrained()->onDelete('cascade');
